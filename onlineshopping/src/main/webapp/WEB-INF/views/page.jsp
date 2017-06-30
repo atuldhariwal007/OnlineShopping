@@ -15,8 +15,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Online Shopping -  </title>
-
+<title>Online Shopping - ${title}</title>
+<script>
+	window.menu = '${title}';
+</script>
 <!-- Bootstrap Core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
@@ -33,22 +35,36 @@
 </head>
 
 <body>
+	<div id="wrapper">
+		<!-- Navigation -->
+		<%@include file="./shared/navbar.jsp"%>
+		<div id="content">
+			<!-- Load home page when user click home-->
+			<c:if test="${userClickHome==true}">
+				<%@include file="home.jsp"%>
+			</c:if>
 
-	<!-- Navigation -->
-	<%@include file="./shared/navbar.jsp"%>
-	<!-- Page Content home page -->
-	
-	<%@include file="./shared/home.jsp"%>
-    
- 	<!-- footer -->
-	<%@include file="./shared/footer.jsp"%>
+			<!-- Load about us page when user click about us-->
+			<c:if test="${userClickAbout==true}">
+				<%@include file="about.jsp"%>
+			</c:if>
 
+			<!-- Load contatc us page when user click contact us-->
+			<c:if test="${userClickContact==true}">
+				<%@include file="contact.jsp"%>
+			</c:if>
+		</div>
+		<!-- footer -->
+		<%@include file="./shared/footer.jsp"%>
+	</div>
 	<!-- jQuery -->
 	<script src="${js}/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="${js}/bootstrap.min.js"></script>
 
+	<!-- custom JavaScript -->
+	<script src="${js}/custom.js"></script>
 </body>
 
 </html>
